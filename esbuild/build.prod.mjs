@@ -23,8 +23,8 @@ const builder = async () => {
         minify: true,
         sourcemap: false,
         define: {
-            'process.env.RELEASE': true,
-            'process.env.DEBUG': false,
+            'process.env.RELEASE': 'true',
+            'process.env.DEBUG': 'false',
         },
         target: ['chrome58', 'firefox57', 'safari11', 'edge16'],
         outfile: './dist/bundle.min.js',

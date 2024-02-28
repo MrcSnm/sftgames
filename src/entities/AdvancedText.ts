@@ -39,12 +39,12 @@ export class AdvancedText extends GameObjects.Container
                 case TextInputType.image:
                 {
                     const sz = Number(this.fontSize);
-                    (this.list[i] as GameObjects.Sprite).setDisplaySize(sz, sz).setPosition(nextPos.x, this.y).setOrigin(0);
+                    (this.list[i] as GameObjects.Sprite).setDisplaySize(sz, sz).setPosition(nextPos.x, 0).setOrigin(0);
                     break;
                 }
                 case TextInputType.string:
                     const txtObj = (this.list[i] as GameObjects.Text);
-                    txtObj.setFontSize(this.fontSize).setPosition(nextPos.x, this.y);
+                    txtObj.setFontSize(this.fontSize).setPosition(nextPos.x, 0);
                     break;
                 default: throw new Error(`Received unkown type ${tuple.type} on tuple with data ${tuple.data} on input ${this.textLiteral}`);
             }
@@ -70,6 +70,7 @@ export class AdvancedText extends GameObjects.Container
      */
     public build(txt: AdvancedTextData)
     {
+        this.removeAll(true);
         this.textLiteral = txt.literal;
         this.textTuple = txt.tuple;
 
@@ -83,6 +84,7 @@ export class AdvancedText extends GameObjects.Container
                 const imgName = this.basePath+images[i].data;
                 this.scene.load.image(imgName, imgName);
             }
+            this.scene.load.start();
             this.scene.load.once(Phaser.Loader.Events.COMPLETE, () => this.finishBuild(txt));
         }
         else

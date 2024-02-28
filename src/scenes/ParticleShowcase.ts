@@ -1,4 +1,5 @@
 import { NavigatedScene } from './NavigatedScene';
+///Import the generated particle json and play here (This is better than parsing with JSON.parse since it gets code completion!).
 import FlamesParticle from '../particles/flame.json'
 import { GameObjects } from 'phaser';
 

@@ -55,7 +55,8 @@ export class CardScreen extends NavigatedScene
     }
 
     /**
-     * Currently it loads every card sprite. As an improvement, one should load an atlas.
+     * Currently it loads every card sprite. As an improvement, one should load an atlas, but since TexturePacker is paid and I don't have much time
+     * to implement the atlas parser from LibGDX, I will use the raw images here.
      */
     preload()
     {
@@ -70,6 +71,9 @@ export class CardScreen extends NavigatedScene
         }
     }
 
+    /**
+     * Card generation here
+     */
     create ()
     {
         super.create();
@@ -87,6 +91,9 @@ export class CardScreen extends NavigatedScene
         this.startReverse();
     }
 
+    /**
+     * Schedules a tween on each card by multiplying the delay on them. This is better since there's no need to chain them 
+     */
     startReverse()
     {
         for(let i = 0; i < this.cards.length; i++)
